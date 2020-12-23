@@ -26,6 +26,16 @@ for i in *.ogg; do ffmpeg -i "$i" "${i%.*}.mp3"; done
 # Add cover to mp3
 brew install eye-d3
 find . -name '*.mp3' -exec eyeD3 --add-image="cover.jpg":FRONT_COVER "{}" \;
+
+# Add cover to m4a (AtomicParsley)
+brew install atomicparsley
+atomicparsley song.m4a --artwork cover.jpg
+
+# Add cover to m4a (mp4art)
+# note: the art didn't show up in iina when using mp4art
+# using atomicparsley was fine
+brew install mp4v2
+mp4art --add cover.jpg song.m4a
 ```
 
 ## Extract audio from video
