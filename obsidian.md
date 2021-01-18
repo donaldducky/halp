@@ -16,8 +16,36 @@ content:-/.*/
 # search by tag
 tag:#my-tag
 
+# search by tag, excluding a sub tag
+tag:#my-tag -tag:#my-tag/nested
+
 # search by title
 file:🔥
+```
+
+## Embedding
+
+https://publish.obsidian.md/help/How+to/Embed+files
+https://publish.obsidian.md/help/Advanced+topics/Accepted+file+formats
+
+```
+![[Note]]
+
+![[image.png|100x100]]
+
+![AltText|100x100](https://url/to/image.png)
+```
+
+### Embed search results using query blocks
+
+Embed all checkboxes:
+```query
+"- [ ]"
+```
+
+Embed tags:
+```query
+tag:my-tag tag:another-tag
 ```
 
 ## Linking
