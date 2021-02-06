@@ -29,3 +29,21 @@ cat file | sponge file
 # traditional way is to write to a temporary file
 cat file > file.bak && mv file.bak file
 ```
+
+## Why is it so hard to find docs for shell commands?
+
+### echo
+
+- https://ss64.com/bash/echo.html
+- http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html#index-echo
+- `man zshbuiltins` -> search for echo
+
+```bash
+# print colours
+ANSI_RED="\033[0;31m"
+ANSI_RESET="\033[0m"
+echo -e "${ANSI_RED}THIS TEXT IS RED${ANSI_RESET}"
+```
+- https://stackoverflow.com/a/20983251
+- https://stackoverflow.com/a/5947802
+- https://en.wikipedia.org/wiki/ANSI_escape_code
