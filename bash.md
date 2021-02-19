@@ -35,3 +35,10 @@ set -o pipefail
 ```
 
 Explanation: https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e16425
+
+## execute until success
+
+```bash
+# https://stackoverflow.com/a/24770962
+cmd; while [ $? -ne 0 ]; do !!; done
+```
