@@ -47,3 +47,24 @@ echo -e "${ANSI_RED}THIS TEXT IS RED${ANSI_RESET}"
 - https://stackoverflow.com/a/20983251
 - https://stackoverflow.com/a/5947802
 - https://en.wikipedia.org/wiki/ANSI_escape_code
+
+## Changing directories
+
+```zsh
+# zsh supports this natively
+cd search replace
+
+# in bash
+cd ${PWD/search/replace}
+
+# example
+$ ls /my/terraform/*
+/my/terraform/dev/app
+/my/terraform/prod/app
+
+$ pwd
+/my/terraform/dev/app
+
+$ cd dev prod; pwd
+/my/terraform/prod/app
+```
