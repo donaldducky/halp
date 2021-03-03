@@ -8,7 +8,7 @@ Hello, I'm going to be stored in remote-file for user@host
 EOF
 ```
 
-## background a process
+## Background a process
 
 ```bash
 ssh -f user@host "nohup cmd > /dev/null 2>&1 &"
@@ -16,4 +16,12 @@ ssh -f user@host "nohup cmd > /dev/null 2>&1 &"
 # there may be an issue with ssh hanging, in which case redirecting all three I/O streams should fix it
 # https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging
 nohup ./myprogram > foo.out 2> foo.err < /dev/null &
+```
+
+## Reset host fingerprint
+
+```bash
+host="<hostname>"
+ssh-keygen -R "$host"
+ssh-keygen -H "$host" >> ~/.ssh/known_hosts
 ```
