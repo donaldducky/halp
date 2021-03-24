@@ -4,6 +4,10 @@
 
 v2's API [changed](https://github.com/aws/aws-cli/issues/4994)
 
+### Encrypt/decrypt using symmetric key
+
+Note: when using asymmetric keys, `--encryption-algorithm` needs to be [specified](https://docs.aws.amazon.com/cli/latest/reference/kms/encrypt.html#encrypt)
+
 ```bash
 # encrypt a value
 aws kms encrypt --key-id "<key-id>" --cli-binary-format raw-in-base64-out --plaintext "<plain-text>" | jq -r '.CiphertextBlob'
@@ -13,6 +17,14 @@ aws kms encrypt --key-id "$(terraform output -raw <my_exported_key_id>)" --cli-b
 
 # decrypt a value
 aws kms decrypt --key-id "<key-id>" --ciphertext-blob "<ciphertext-blob-from-encrypt>"
+{
+  "KeyId": "<key-arn>",
+  "Plaintext": "<base64-encoded-contents>",
+  "EncryptionAlgorithm": "SYMMETRIC_DEFAULT"
+}
+
+# the value is base64 encoded
+aws kms decrypt --key-id "<key-id>" --ciphertext-blob "<ciphertext-blob-from-encrypt>" | jq -r .Plaintext | base64 -d
 ```
 
 ## TODO
