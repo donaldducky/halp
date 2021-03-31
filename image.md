@@ -12,6 +12,10 @@ ffmpeg -i input.webp output.jpg
 ```bash
 # remove exif data from images
 exiftool -all= my-image.jpg
+
+# filesize of image
+mdls -raw -name kMDItemFSSize a.jpg
+269055
 ```
 
 ## Manipulation
