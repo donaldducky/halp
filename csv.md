@@ -8,6 +8,9 @@ column -s, -t < somefile.csv | less -#2 -N -S
 
 # empty values need place holders for column to work
 sed 's/,,/, ,/g;s/,,/, ,/g' data.csv | column -s, -t
+
+# column outputs tabs, spaces can be used via expand
+sed 's/,,/, ,/g;s/,,/, ,/g' data.csv | column -s, -t | expand
 ```
 
 ## TODO
