@@ -24,3 +24,23 @@ docker cp my_web_1:/etc/httpd/conf/httpd.conf httpd.conf
 # edit file and put it back
 docker cp httpd.conf my_web_1:/etc/httpd/conf/httpd.conf
 ```
+
+## Executing commands
+
+In a new container that is removed:
+
+```bash
+docker run -it --rm -v <local-path>:<container-path> -w <container-path> <image-name> <cmd>
+
+# Example
+docker run -it --rm -v "$PWD":/app -w /app my_container ls
+```
+
+In a currently running container:
+
+```bash
+docker exec -it <image-name-or-id> <cmd>
+
+# Example
+docker exec -it my-container bash
+```
