@@ -9,7 +9,7 @@ opts="-a -b"
 cmd $opts
 ```
 
-In zsh it needs to be split on spaces (`${=var}` bit):
+In zsh it needs to be split on spaces (`${=var}` bit), otherwise it passes the var as a single string:
 
 ```zsh
 opts="-a -b"
