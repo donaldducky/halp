@@ -1,5 +1,13 @@
 # VIM
 
+## Execute commands without triggering autocommands
+
+```vim
+" save
+:noautocmd w
+:noa w
+```
+
 ## Undo Tree
 
 VIM stores changes in a tree structure.
