@@ -140,3 +140,17 @@ Expanded display is on.
 \x
 Expanded display is off.
 ```
+
+## postgresql homebrew
+
+```bash
+psql -U postgres
+```
+
+> FATAL: role "postgres" does not exist
+
+```bash
+# on m1: /opt/homebrew
+# on intel: /usr/local
+$(brew --prefix)/opt/postgres/bin/createuser -s postgres
+```
