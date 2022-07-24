@@ -4,6 +4,10 @@
 # rebase from the beginning of time!
 git rebase -i --root
 
+# replace author on entire repo
+# Note: this is a destructive action, it will rewrite SHAs and change timestamps
+git rebase --root --exec 'git commit --amend --no-edit --reset-author'
+
 # find history of a deleted file
 git log --all --full-history -- <path-to-file>
 
