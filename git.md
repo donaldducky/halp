@@ -8,6 +8,9 @@ git rebase -i --root
 # Note: this is a destructive action, it will rewrite SHAs and change timestamps
 git rebase --root --exec 'git commit --amend --no-edit --reset-author'
 
+# prefix multiple commit messages
+git rebase --exec 'git commit --amend -m "PREFIX: $(git show -s --format=%s)"' origin/main
+
 # find history of a deleted file
 git log --all --full-history -- <path-to-file>
 
