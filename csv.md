@@ -13,6 +13,19 @@ sed 's/,,/, ,/g;s/,,/, ,/g' data.csv | column -s, -t
 sed 's/,,/, ,/g;s/,,/, ,/g' data.csv | column -s, -t | expand
 ```
 
+## csv to JSON
+
+```zsh
+# csvjson
+brew install csvkit
+# or open new terminal
+hash -r
+```
+
+```zsh
+cat some.csv | csvjson 
+```
+
 ## TODO
 
 - [ ] add csvtool commands
