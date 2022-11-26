@@ -68,3 +68,10 @@ $ pwd
 $ cd dev prod; pwd
 /my/terraform/prod/app
 ```
+
+## Sort by semantic version
+
+```sh
+# https://stackoverflow.com/a/40391207
+echo "${versions}" | sed '/-/!{s/$/_/}' | sort -V | sed 's/_$//'
+```
