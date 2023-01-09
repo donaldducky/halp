@@ -73,6 +73,14 @@ EOF
 my_var=${1:-default}
 ```
 
+## get the script dir
+
+Useful when you need to reference files relative to the script itself.
+
+```bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+```
+
 ## Modulino
 
 Useful when you want a script to be
