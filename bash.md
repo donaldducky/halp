@@ -43,6 +43,36 @@ Explanation: https://gist.github.com/mohanpedala/1e2ff5661761d3abd0385e8223e1642
 cmd; while [ $? -ne 0 ]; do !!; done
 ```
 
+## heredocs
+
+- https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Here-Documents
+
+```bash
+# Using quotes around "word", EOF in this case, prevents expansion
+cat <<"EOF"
+My output here
+EOF
+
+# Without quotes allows expansion
+var="hello there"; cat <<EOF
+My output with $var expanded
+EOF
+
+# Using a "-" strips trailing tabs allowing for indenting content.
+	cat <<-"EOF"
+	Hello there
+EOF
+```
+
+## parameter expansion
+
+- https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Shell-Parameter-Expansion
+
+```bash
+# expand $1 or set default if null or unset
+my_var=${1:-default}
+```
+
 ## Modulino
 
 Useful when you want a script to be
