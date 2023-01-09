@@ -29,4 +29,7 @@ git checkout @{-3}
 
 # find the branch
 git rev-parse --symbolic-full-name @{-3}
+
+# find symlinks in a repo
+git ls-tree HEAD -r | rg 120000
 ```
