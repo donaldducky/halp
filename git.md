@@ -33,3 +33,14 @@ git rev-parse --symbolic-full-name @{-3}
 # find symlinks in a repo
 git ls-tree HEAD -r | rg 120000
 ```
+
+## Convert repo to bare repo
+
+```bash
+mv repo/.git repo.git
+rm -fr repo
+cd repo.git
+git config --bool core.bare true
+```
+
+- https://stackoverflow.com/a/2200662
