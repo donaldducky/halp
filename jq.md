@@ -20,3 +20,46 @@ output | jq -Rrc '. as $line | try (fromjson | .) catch $line'
 # Test and exit non-zero when falsy
 output | jq -e '.something == 1'
 ```
+
+## Combining data
+
+```bash
+# use -s to stream multiple inputs
+jq -s '.|flatten' <(echo '[[{"id":1},{"id":2}]]') <(echo '[[{"id":3},{"id":4}]]')
+[
+  {
+    "id": 1
+  },
+  {
+    "id": 2
+  },
+  {
+    "id": 3
+  },
+  {
+    "id": 4
+  }
+]
+
+# map to entries (ie. like to_entries) and use from_entries
+# in JSON, the object key must be a string
+jq -s '.|flatten|map({key: "\(.id)", value: .})|from_entries' <(echo '[{"id":1,"name":"a"},{"id":2,"name":"b"}]') <(echo '[{"id":3,"name":"c"},{"id":4,"name":"d"}]')
+{
+  "1": {
+    "id": 1,
+    "name": "a"
+  },
+  "2": {
+    "id": 2,
+    "name": "b"
+  },
+  "3": {
+    "id": 3,
+    "name": "c"
+  },
+  "4": {
+    "id": 4,
+    "name": "d"
+  }
+}
+```
