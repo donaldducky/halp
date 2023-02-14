@@ -63,3 +63,40 @@ jq -s '.|flatten|map({key: "\(.id)", value: .})|from_entries' <(echo '[{"id":1,"
   }
 }
 ```
+
+## [Recursive descent](https://stedolan.github.io/jq/manual/#RecursiveDescent:..)
+
+Yields every value.
+
+Super useful for nested blobs of data.
+
+```bash
+echo '{"a":{"b":{"c":27,"c2":"hello"},"b2":[1,2,3]}}' | jq -c ..
+{"a":{"b":{"c":27,"c2":"hello"},"b2":[1,2,3]}}
+{"b":{"c":27,"c2":"hello"},"b2":[1,2,3]}
+{"c":27,"c2":"hello"}
+27
+"hello"
+[1,2,3]
+1
+2
+3
+```
+
+```bash
+# select values for key "id"
+echo '{"id": "outer", "nested": {"id": "inner", "innermost": {"id": {"hi": "there"}}}}' | jq -cr '.. | .id? | select(.)'
+outer
+inner
+{"hi":"there"}
+```
+
+```bash
+# select all objects with key "id"
+echo '{"id": "outer", "nested": {"id": "inner", "innermost": {"id": {"hi": "there"}}}, "array": [{"id": 1, "value": "one"},{"id": 2, "value": "two"}]}' | jq -c '..|select(has("id"))?'
+{"id":"outer","nested":{"id":"inner","innermost":{"id":{"hi":"there"}}},"array":[{"id":1,"value":"one"},{"id":2,"value":"two"}]}
+{"id":"inner","innermost":{"id":{"hi":"there"}}}
+{"id":{"hi":"there"}}
+{"id":1,"value":"one"}
+{"id":2,"value":"two"}
+```
