@@ -26,7 +26,19 @@ hash -r
 cat some.csv | csvjson 
 ```
 
+## csvtool
+
+Use `pip` to install `csvtool`.
+
+```sh
+pip install csvtool
+```
+
+```sh
+# extract columns 1 and 5
+< some.csv csvtool -c 1,5
+```
+
 ## TODO
 
-- [ ] add csvtool commands
 - [ ] look at [csvkit](https://csvkit.readthedocs.io/en/latest/)
