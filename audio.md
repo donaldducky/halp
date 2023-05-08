@@ -27,6 +27,10 @@ for i in *.ogg; do ffmpeg -i "$i" "${i%.*}.mp3"; done
 brew install eye-d3
 find . -name '*.mp3' -exec eyeD3 --add-image="cover.jpg":FRONT_COVER "{}" \;
 
+# Extract cover from mp3 (requires a folder to exist)
+mkdir images-folder
+eyeD3 song.mp3 --write-images images-folder
+
 # Add cover to m4a (AtomicParsley)
 brew install atomicparsley
 atomicparsley song.m4a --artwork cover.jpg
@@ -43,6 +47,15 @@ mp4art --add cover.jpg song.m4a
 ```bash
 # extract aac audio from video to put on an iOS device
 ffmpeg -i input.mp4 -vn -c:a aac output.m4a
+```
+
+## Trim audio
+
+```bash
+# Extract a portion of audio from an mp3
+# Format is hh:mm:ss[.xxx]
+# Note: this does not copy image metadata (ie. FRONT_COVER)
+ffmpeg -i input.mp3 -vn -acodec copy -ss 00:00:11 -to 00:01:46 output.mp3
 ```
 
 ## Text to speech
