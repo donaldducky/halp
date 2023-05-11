@@ -9,7 +9,7 @@ git rebase -i --root
 git rebase --root --exec 'git commit --amend --no-edit --reset-author'
 
 # prefix multiple commit messages
-git rebase --exec 'git commit --amend -m "PREFIX: $(git show -s --format=%s)"' origin/main
+git rebase --exec 'git commit --amend -m "PREFIX: $(git show --no-patch --format=%B)"' origin/main
 
 # find history of a deleted file
 git log --all --full-history -- <path-to-file>
