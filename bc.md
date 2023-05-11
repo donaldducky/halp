@@ -11,3 +11,14 @@ echo 'scale=2; 39308/269055*100' | bc
 echo 'scale=3; 39308/269055*100' | bc
 14.600
 ```
+
+## sum
+
+```bash
+# sum line separated numbers
+cat << EOF | paste -sd+ - | bc
+1
+2
+3
+EOF
+```
