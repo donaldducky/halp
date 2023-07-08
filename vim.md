@@ -43,3 +43,15 @@ Learn more:
 - `:help undo-persistence`
 - `:help undo-tree`
 - https://thevaluable.dev/vim-intermediate/#undo-tree
+
+## Substitute with an expression
+
+When a substitute starts with `\=` we can use a `:h sub-replace-expression`.
+```viml
+" replace "2, 4"
+" with "hello 4-0"
+:s/\(\d\+\), \(\d\+\)/\=printf('hello %d-%d', submatch(1)+2, submatch(2)-4)/
+```
+
+Useful article describing it:
+- https://jdhao.github.io/2020/01/10/nvim_number_arithmetic_in_substitute/
