@@ -30,3 +30,8 @@ youtube-dl --batch-file input.txt
 # -c, --continue
 youtube-dl -ciw --playlist-items 1-100 --extract-audio --audio-format mp3 --restrict-filenames "https://www.youtube.com/playlist?list=<playlist-id>"
 ```
+
+## Output template
+
+List of variables that can be used in the output template using python [string formatting operations](https://docs.python.org/2/library/stdtypes.html#string-formatting) (ie. `-o "%(title)s.%(ext)s"`).
+[ytdl-org/youtube-dl/README.md#output-template](https://github.com/ytdl-org/youtube-dl/blob/211cbfd5d46025a8e4d8f9f3d424aaada4698974/README.md#output-template)
