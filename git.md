@@ -44,3 +44,26 @@ git config --bool core.bare true
 ```
 
 - https://stackoverflow.com/a/2200662
+
+## Merge repo into another using subtree (keeping history)
+
+- starting with project-a and project-b
+- end up with a `project-b` folder in project-a
+
+```sh
+# start in the repo you want to merge the other one into
+cd /path/to/project-a
+
+# add the other repo as a remote
+git remote add -f other /path/to/project-b
+
+# set merge base
+git merge -s ours --no-commit --allow-unrelated-histories other/master
+git read-tree --prefix=project-b/ -u other/master
+git commit -m "Merge project b into subdirectory project-b"
+
+# merge commits
+git pull -s subtree other master
+```
+
+- https://mirrors.edge.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html
